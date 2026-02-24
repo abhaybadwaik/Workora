@@ -13,9 +13,8 @@ import lombok.*;
 public class Employee {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-    private Long id;
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
 
     @Column(nullable = false)
     private String name;
@@ -30,7 +29,7 @@ public class Employee {
     @Column(nullable = false)
     private Role role;
 
-    private int paidLeaveBalance = 10;
+//    private int paidLeaveBalance = 10;
 
     @ManyToOne
     @JoinColumn(name = "manager_id")

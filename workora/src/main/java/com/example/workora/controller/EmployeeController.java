@@ -4,10 +4,9 @@ import com.example.workora.entity.Employee;
 import com.example.workora.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/employees")
@@ -20,5 +19,14 @@ public class EmployeeController {
     public ResponseEntity<Employee> createEmployee(@RequestBody Employee employee) {
         Employee saved = employeeService.createEmployee(employee);
         return ResponseEntity.ok(saved);
+    }
+    @GetMapping
+    public ResponseEntity<List<Employee>> getAllEmployees() {
+        return ResponseEntity.ok(employeeService.getAllEmployees());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Employee> getEmployeeById(@PathVariable Long id) {
+        return ResponseEntity.ok(employeeService.getEmployeeById(id));
     }
 }
